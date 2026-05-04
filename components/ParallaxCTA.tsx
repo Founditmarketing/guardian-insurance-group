@@ -28,7 +28,7 @@ const ParallaxCTA: React.FC = () => {
                   loop
                   muted
                   playsInline
-                  className="w-full h-full object-cover object-right md:object-center"
+                  className="w-full h-full object-cover object-[85%_center] md:object-center"
                >
                   <source src="/GIGherovideo.mp4" type="video/mp4" />
                </video>
@@ -47,7 +47,7 @@ const ParallaxCTA: React.FC = () => {
                viewport={{ once: true }}
                className="text-3xl md:text-5xl lg:text-6xl font-heading font-extrabold text-white mb-6 leading-tight drop-shadow-lg"
             >
-               Come visit our office at <br /> 257 N Business Route 5, Camdenton, MO 65020
+               Come visit our office at 257 N Business Route 5, Camdenton, MO 65020
             </motion.h2>
 
             <motion.p

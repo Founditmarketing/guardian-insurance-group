@@ -49,7 +49,7 @@ const Testimonials: React.FC = () => {
                 <h2 className="text-3xl font-heading font-bold text-white">What the Lake of the Ozarks is Saying</h2>
             </div>
 
-            <div className="bg-white rounded-2xl p-8 md:p-12 shadow-2xl relative min-h-[300px]">
+            <div className="bg-white rounded-2xl p-6 md:p-12 shadow-2xl relative min-h-[300px]">
                 <div className="absolute -top-6 left-8 bg-brand-gold rounded-full p-3 shadow-lg z-20">
                     <Quote className="text-white" size={24} />
                 </div>
@@ -75,7 +75,7 @@ const Testimonials: React.FC = () => {
                                     <Star key={i} size={20} fill="currentColor" />
                                 ))}
                             </div>
-                            <p className="text-xl md:text-2xl text-brand-navy font-medium italic mb-6 leading-relaxed">
+                            <p className="text-base sm:text-lg md:text-2xl text-brand-navy font-medium italic mb-6 leading-relaxed">
                                 "{current.text}"
                             </p>
                             <div>
