@@ -26,30 +26,50 @@ const features = [
 const WhyUs: React.FC = () => {
   return (
     <Section className="relative overflow-visible perspective-1000">
-       <div className="text-center max-w-3xl mx-auto mb-20">
-        <motion.span 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="text-brand-gold font-bold tracking-wider uppercase text-sm mb-4 block"
-        >
-          The Independent Advantage
-        </motion.span>
-        
-        <div className="flex justify-center mb-6">
-           <TextReveal className="text-4xl md:text-5xl font-heading font-extrabold text-brand-navy leading-tight justify-center">
-              Why Choose Guardian Insurance Group?
-           </TextReveal>
+       <div className="flex flex-col lg:flex-row items-center justify-between gap-12 mb-20">
+         <div className="text-center lg:text-left lg:w-1/2 max-w-2xl mx-auto lg:mx-0">
+          <motion.span 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="text-brand-gold font-bold tracking-wider uppercase text-sm mb-4 block"
+          >
+            The Independent Advantage
+          </motion.span>
+          
+          <div className="flex justify-center lg:justify-start mb-6">
+             <TextReveal className="text-4xl md:text-5xl font-heading font-extrabold text-brand-navy leading-tight justify-center lg:justify-start">
+                Why Choose Guardian Insurance Group?
+             </TextReveal>
+          </div>
+          
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="text-slate-600 text-lg md:text-xl font-light"
+          >
+             Here at Guardian Insurance Group, we pride ourselves in our ability to find the best solutions for any insurance need.
+          </motion.p>
         </div>
-        
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="text-slate-600 text-lg md:text-xl font-light"
+
+        <motion.div 
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="w-full lg:w-1/2 relative rounded-3xl overflow-hidden shadow-2xl border border-gray-200"
         >
-           Here at Guardian Insurance Group, we pride ourselves in our ability to find the best solutions for any insurance need.
-        </motion.p>
+           <div className="w-full aspect-video bg-gray-100">
+              <iframe 
+                 className="w-full h-full"
+                 src="https://www.youtube.com/embed/T9th3U78D7E?rel=0" 
+                 title="Guardian Insurance Group Video" 
+                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                 allowFullScreen
+              ></iframe>
+           </div>
+        </motion.div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 relative z-10 px-4">
