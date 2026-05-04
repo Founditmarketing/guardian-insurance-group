@@ -28,7 +28,7 @@ const ParallaxCTA: React.FC = () => {
                   loop
                   muted
                   playsInline
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-right md:object-center"
                >
                   <source src="/GIGherovideo.mp4" type="video/mp4" />
                </video>
