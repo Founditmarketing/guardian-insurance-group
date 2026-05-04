@@ -30,7 +30,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-500 ${scrolled || isOpen || !isHomePage
+      className={`fixed w-full z-[60] transition-all duration-500 ${scrolled || isOpen || !isHomePage
         ? 'bg-brand-navy border-b border-white/10 py-2 md:py-3 shadow-lg'
         : 'bg-transparent py-4 md:py-6'
         }`}
@@ -133,7 +133,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="lg:hidden bg-brand-navy absolute top-full left-0 w-full shadow-2xl border-t border-white/10 h-[calc(100vh-80px)] overflow-y-auto animate-fade-in z-40 pb-10">
+        <div className="lg:hidden bg-brand-navy absolute top-full left-0 w-full shadow-2xl border-t border-white/10 h-[100vh] overflow-y-auto animate-fade-in z-40 pb-32">
           <div className="px-4 pt-4 pb-3 space-y-1">
             {NAV_LINKS.map((link) => (
               <div key={link.label}>
