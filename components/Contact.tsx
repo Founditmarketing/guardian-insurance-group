@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Section from './ui/Section';
 import { PHONE_NUMBER, FAX_NUMBER, ADDRESS, GOOGLE_MAPS_EMBED, SOCIAL_LINKS, SERVICES } from '../constants';
-import { MapPin, Phone, Clock, CheckCircle, Loader2, Facebook, Instagram } from 'lucide-react';
+import { MapPin, Phone, Clock, CheckCircle, Loader2, Facebook } from 'lucide-react';
 import { motion } from 'framer-motion';
 import emailjs from 'emailjs-com';
 
@@ -90,15 +90,6 @@ const Contact: React.FC = () => {
                   title="Follow on Facebook"
                 >
                   <Facebook size={20} />
-                </a>
-                <a
-                  href={SOCIAL_LINKS.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-brand-offWhite p-3 rounded-lg text-brand-navy hover:bg-brand-gold hover:text-white transition-all"
-                  title="Follow on Instagram"
-                >
-                  <Instagram size={20} />
                 </a>
               </div>
             </div>
