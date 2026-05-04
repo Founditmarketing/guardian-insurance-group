@@ -12,6 +12,7 @@ const Hero: React.FC = () => {
     offset: ["start start", "end start"]
   });
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const y = useTransform(scrollY, [0, 1000], ["0%", "30%"]);
 
   return (
     <div
@@ -20,7 +21,7 @@ const Hero: React.FC = () => {
       className="relative h-screen min-h-[600px] w-full overflow-hidden flex items-center justify-center bg-brand-navy"
     >
       {/* Background with Overlay - Video */}
-      <div className="absolute inset-0 z-0">
+      <motion.div style={{ y }} className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-brand-navy/60 z-10 mix-blend-multiply"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-transparent to-transparent z-10"></div>
         <motion.img
@@ -31,7 +32,7 @@ const Hero: React.FC = () => {
           alt="Guardian Insurance Group Team"
           className="w-full h-full object-cover object-[center_25%]"
         />
-      </div>
+      </motion.div>
 
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col md:flex-row items-center justify-between">
 
@@ -46,7 +47,7 @@ const Hero: React.FC = () => {
             <div className="flex text-brand-gold">
               {[...Array(5)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}
             </div>
-            <span className="text-xs font-bold tracking-wide uppercase text-brand-gold">Trusted by 4,500+ Locals</span>
+            <span className="text-xs font-bold tracking-wide uppercase text-brand-gold">5-Star Independent Agency</span>
           </motion.div>
 
           <motion.h1
@@ -87,12 +88,15 @@ const Hero: React.FC = () => {
 
         {/* Floating Quote Card */}
         <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 1, duration: 0.8, type: "spring" }}
+          style={{ opacity }}
           className="mt-12 md:mt-0 w-full max-w-md perspective-1000 hidden md:block"
         >
-          <div className="bg-white/5 backdrop-blur-sm p-8 rounded-3xl shadow-2xl border border-white/10 transform transition-transform hover:scale-[1.02] relative overflow-hidden">
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 1, duration: 0.8, type: "spring" }}
+            className="bg-white/5 backdrop-blur-sm p-8 rounded-3xl shadow-2xl border border-white/10 transform transition-transform hover:scale-[1.02] relative overflow-hidden"
+          >
             {/* Glossy sheen effect */}
             <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/10 to-transparent pointer-events-none"></div>
 
@@ -119,7 +123,7 @@ const Hero: React.FC = () => {
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
 
       </div>
