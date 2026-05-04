@@ -90,7 +90,7 @@ const TermsAndConditions: React.FC = () => {
                             <p className="font-bold text-brand-navy mb-2">Guardian Insurance Group</p>
                             <p className="mb-1">257 N Business Route 5, Camdenton, MO 65020</p>
                             <p className="mb-1">Phone: <a href="tel:573-410-1441" className="text-brand-gold hover:underline">(573) 410-1441</a></p>
-                            <p>Email: <a href="mailto:contact@guardianinsurancegroup.com" className="text-brand-gold hover:underline">contact@guardianinsurancegroup.com</a></p>
+                            <p>Email: <a href="mailto:paula@guardiangroupmo.com" className="text-brand-gold hover:underline">paula@guardiangroupmo.com</a></p>
                         </div>
                     </div>
                 </div>

@@ -49,7 +49,7 @@ const PrivacyPolicy: React.FC = () => {
                             <li>Contact preferences</li>
                         </ul>
                         <p className="mb-6">
-                            We may also collect sensitive personal information (such as health-related data or insurance history) with your explicit consent and only when necessary to provide insurance services or process claims. We do not knowingly collect personal information from individuals under 18 years of age. If we become aware that we have inadvertently collected such information, we will promptly delete it. Please contact us at <a href="mailto:contact@guardianinsurancegroup.com" className="text-brand-gold hover:underline">contact@guardianinsurancegroup.com</a> if you believe this applies.
+                            We may also collect sensitive personal information (such as health-related data or insurance history) with your explicit consent and only when necessary to provide insurance services or process claims. We do not knowingly collect personal information from individuals under 18 years of age. If we become aware that we have inadvertently collected such information, we will promptly delete it. Please contact us at <a href="mailto:paula@guardiangroupmo.com" className="text-brand-gold hover:underline">paula@guardiangroupmo.com</a> if you believe this applies.
                         </p>
 
                         <h2 className="text-2xl font-heading font-bold text-brand-navy mt-12 mb-6">2. HOW WE USE YOUR INFORMATION</h2>
@@ -105,7 +105,7 @@ const PrivacyPolicy: React.FC = () => {
                             <li>File a complaint regarding misuse of your information</li>
                         </ul>
                         <p className="mb-6">
-                            To opt out of receiving SMS messages, simply reply STOP to any message. To manage other preferences or make a formal request, contact us at <a href="mailto:contact@guardianinsurancegroup.com" className="text-brand-gold hover:underline">contact@guardianinsurancegroup.com</a> or (573) 410-1441.
+                            To opt out of receiving SMS messages, simply reply STOP to any message. To manage other preferences or make a formal request, contact us at <a href="mailto:paula@guardiangroupmo.com" className="text-brand-gold hover:underline">paula@guardiangroupmo.com</a> or (573) 410-1441.
                         </p>
 
                         <h2 className="text-2xl font-heading font-bold text-brand-navy mt-12 mb-6">7. CONTACT US</h2>
@@ -114,7 +114,7 @@ const PrivacyPolicy: React.FC = () => {
                             <p className="font-bold text-brand-navy mb-2">Guardian Insurance Group</p>
                             <p className="mb-1">257 N Business Route 5</p>
                             <p className="mb-1">Camdenton, MO 65020</p>
-                            <p className="mb-1">Email: <a href="mailto:contact@guardianinsurancegroup.com" className="text-brand-gold hover:underline">contact@guardianinsurancegroup.com</a></p>
+                            <p className="mb-1">Email: <a href="mailto:paula@guardiangroupmo.com" className="text-brand-gold hover:underline">paula@guardiangroupmo.com</a></p>
                             <p className="mb-1">Phone: <a href="tel:573-410-1441" className="text-brand-gold hover:underline">(573) 410-1441</a></p>
                             <p>Website: <a href="https://guardianinsurancegroup.com" className="text-brand-gold hover:underline">https://guardianinsurancegroup.com</a></p>
                         </div>
