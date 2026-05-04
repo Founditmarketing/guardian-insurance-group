@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Section from './ui/Section';
 import { PHONE_NUMBER, FAX_NUMBER, ADDRESS, GOOGLE_MAPS_EMBED, SOCIAL_LINKS, SERVICES } from '../constants';
-import { MapPin, Phone, CheckCircle, Loader2, Facebook } from 'lucide-react';
+import { MapPin, Phone, CheckCircle, Loader2, Facebook, Map } from 'lucide-react';
 import { motion } from 'framer-motion';
 import emailjs from 'emailjs-com';
 
@@ -54,6 +54,18 @@ const Contact: React.FC = () => {
               <div>
                 <h4 className="font-bold text-brand-navy">Visit Us</h4>
                 <p className="text-slate-600">{ADDRESS}</p>
+              </div>
+            </div>
+
+            <div className="flex items-start">
+              <div className="bg-brand-offWhite p-3 rounded-lg mr-4">
+                <Map className="text-brand-gold" size={24} />
+              </div>
+              <div>
+                <h4 className="font-bold text-brand-navy">Service Areas</h4>
+                <p className="text-slate-600 text-sm leading-relaxed mt-1">
+                  Osage Beach, MO &middot; Climax Springs, MO &middot; Springfield, MO &middot; Sunrise Beach, MO &middot; Linn Creek, MO &middot; Lake Ozark, MO &middot; Warsaw, MO &middot; Lebanon, MO &middot; Camdenton, MO &middot; Eldon, MO
+                </p>
               </div>
             </div>
 
