@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Section from './ui/Section';
 import { PHONE_NUMBER, FAX_NUMBER, ADDRESS, GOOGLE_MAPS_EMBED, SOCIAL_LINKS, SERVICES } from '../constants';
-import { MapPin, Phone, Clock, CheckCircle, Loader2, Facebook } from 'lucide-react';
+import { MapPin, Phone, CheckCircle, Loader2, Facebook } from 'lucide-react';
 import { motion } from 'framer-motion';
 import emailjs from 'emailjs-com';
 
@@ -68,17 +68,6 @@ const Contact: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex items-start">
-              <div className="bg-brand-offWhite p-3 rounded-lg mr-4">
-                <Clock className="text-brand-gold" size={24} />
-              </div>
-              <div>
-                <h4 className="font-bold text-brand-navy">Office Hours</h4>
-                <p className="text-slate-600">Mon - Fri: 8:30am - 5:00pm</p>
-                <p className="text-slate-600">Sat - Sun: Closed</p>
-              </div>
-            </div>
-
             <div className="pt-4">
               <h4 className="font-bold text-brand-navy mb-4">Follow Us</h4>
               <div className="flex gap-4">
@@ -134,7 +123,7 @@ const Contact: React.FC = () => {
           ) : null}
 
           <h3 className="text-2xl font-bold text-brand-navy mb-2">Request a Quote</h3>
-          <p className="text-slate-500 mb-8 text-sm">Fill out the simple form below and a team member will reach out within 24 hours.</p>
+          <p className="text-slate-500 mb-8 text-sm">Fill out the simple form below and a team member will reach out shortly.</p>
 
           <form ref={form} className="space-y-6" onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
