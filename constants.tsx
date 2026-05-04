@@ -31,8 +31,7 @@ export const NAV_LINKS: NavLink[] = [
 ];
 
 export const SOCIAL_LINKS = {
-  facebook: "https://www.facebook.com/",
-  instagram: "https://www.instagram.com/1st.insurance/"
+  facebook: "https://www.facebook.com/NienhueserAgency/"
 };
 
 export const SERVICES: Service[] = [

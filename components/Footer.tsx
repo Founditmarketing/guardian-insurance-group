@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { NAV_LINKS, PHONE_NUMBER, ADDRESS, SOCIAL_LINKS } from '../constants';
-import { Facebook, Instagram, ShieldCheck } from 'lucide-react';
+import { Facebook, ShieldCheck } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -24,9 +24,6 @@ const Footer: React.FC = () => {
             <div className="flex space-x-4">
               <a href={SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer" className="bg-white/10 p-3 rounded-full text-white hover:bg-brand-gold hover:text-white transition-all duration-300">
                 <Facebook size={20} />
-              </a>
-              <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="bg-white/10 p-3 rounded-full text-white hover:bg-brand-gold hover:text-white transition-all duration-300">
-                <Instagram size={20} />
               </a>
             </div>
           </div>
