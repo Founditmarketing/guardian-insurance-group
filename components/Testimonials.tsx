@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { TESTIMONIALS } from '../constants';
 import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Testimonials: React.FC = () => {
   // Mobile Pagination
@@ -99,12 +100,17 @@ const Testimonials: React.FC = () => {
                                 <p className="text-base font-medium italic mb-6 leading-relaxed text-brand-navy">
                                     "{current.text}"
                                 </p>
-                                <div>
-                                    <h4 className="font-bold text-brand-navy text-lg">{current.author}</h4>
-                                    <span className="text-slate-400 text-sm flex items-center justify-center gap-1">
-                                      <span className="w-1.5 h-1.5 rounded-full bg-brand-gold inline-block"></span>
-                                      {current.location}
-                                    </span>
+                                <div className="w-full flex justify-between items-end px-2">
+                                    <div className="text-left">
+                                        <h4 className="font-bold text-brand-navy text-lg">{current.author}</h4>
+                                        <span className="text-slate-400 text-sm flex items-center gap-1 mt-1">
+                                          <span className="w-1.5 h-1.5 rounded-full bg-brand-gold inline-block"></span>
+                                          {current.location}
+                                        </span>
+                                    </div>
+                                    <Link to="/reviews" className="text-brand-gold hover:text-brand-navy font-bold text-xs uppercase tracking-wide transition-colors whitespace-nowrap pb-1">
+                                      Read More
+                                    </Link>
                                 </div>
                             </div>
                         </motion.div>
@@ -174,12 +180,17 @@ const Testimonials: React.FC = () => {
                                 <p className="text-sm text-brand-navy font-medium italic mb-6 flex-grow leading-relaxed line-clamp-5">
                                     "{testimonial.text}"
                                 </p>
-                                <div>
-                                    <h4 className="font-bold text-brand-navy text-sm lg:text-base">{testimonial.author}</h4>
-                                    <span className="text-slate-500 text-xs flex items-center gap-1 mt-1">
-                                      <span className="w-1.5 h-1.5 rounded-full bg-brand-gold inline-block"></span>
-                                      {testimonial.location}
-                                    </span>
+                                <div className="flex justify-between items-end w-full">
+                                    <div>
+                                        <h4 className="font-bold text-brand-navy text-sm lg:text-base">{testimonial.author}</h4>
+                                        <span className="text-slate-500 text-xs flex items-center gap-1 mt-1">
+                                          <span className="w-1.5 h-1.5 rounded-full bg-brand-gold inline-block"></span>
+                                          {testimonial.location}
+                                        </span>
+                                    </div>
+                                    <Link to="/reviews" className="text-brand-gold hover:text-brand-navy font-bold text-xs uppercase tracking-wide transition-colors whitespace-nowrap pb-0.5">
+                                      Read More
+                                    </Link>
                                 </div>
                             </div>
                         ))}
