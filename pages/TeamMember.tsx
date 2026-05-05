@@ -15,7 +15,7 @@ const TeamMember: React.FC = () => {
   }, [id]);
 
   if (!member) {
-    return <Navigate to="/#team" replace />;
+    return <Navigate to="/about#team" replace />;
   }
 
   return (
@@ -28,7 +28,7 @@ const TeamMember: React.FC = () => {
       <Section className="flex-grow pt-8">
         <div className="max-w-6xl mx-auto">
           <Link 
-            to="/#team" 
+            to="/about#team" 
             className="inline-flex items-center text-brand-gold hover:text-brand-navy transition-colors mb-8 font-bold"
           >
             <ArrowLeft className="mr-2" size={20} />
@@ -61,7 +61,7 @@ const TeamMember: React.FC = () => {
                   {member.name}
                 </h1>
                 <p className="text-xl text-brand-gold font-bold uppercase tracking-wider mb-8">
-                  {member.role}
+                  {member.role.split(',').pop()?.trim()}
                 </p>
                 
                 <div className="prose prose-lg text-slate-600 max-w-none">
