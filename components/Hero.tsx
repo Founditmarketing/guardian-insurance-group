@@ -37,9 +37,9 @@ const Hero: React.FC = () => {
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col md:flex-row items-center justify-between">
 
         {/* Text Content */}
-        <motion.div style={{ opacity }} className="text-center md:text-left text-white max-w-2xl mt-32 md:mt-0">
+        <motion.div style={{ opacity }} className="text-center md:text-left text-white max-w-2xl mt-16 md:mt-0">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 1, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
             className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-1.5 mb-6"
@@ -54,7 +54,7 @@ const Hero: React.FC = () => {
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 1, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
             className="text-5xl sm:text-6xl lg:text-7xl font-heading font-extrabold leading-tight mb-6 tracking-tight"
@@ -66,7 +66,7 @@ const Hero: React.FC = () => {
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 1, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.6 }}
             className="text-base sm:text-lg md:text-xl text-slate-100 mb-8 max-w-lg mx-auto md:mx-0 font-light leading-relaxed"
@@ -75,7 +75,7 @@ const Hero: React.FC = () => {
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 1, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.6 }}
             className="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start"
