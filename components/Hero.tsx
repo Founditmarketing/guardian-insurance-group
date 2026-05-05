@@ -6,12 +6,9 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 const Hero: React.FC = () => {
   const ref = useRef(null);
 
-  // Scroll Logic - Only used for text opacity fading now
-  const { scrollY } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"]
-  });
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  // Scroll Logic - Fade out on scroll
+  const { scrollY } = useScroll();
+  const opacity = useTransform(scrollY, [0, 300], [1, 0], { clamp: true });
   const y = useTransform(scrollY, [0, 1000], ["0%", "30%"]);
 
   return (
@@ -95,9 +92,9 @@ const Hero: React.FC = () => {
           className="mt-12 md:mt-0 w-full max-w-md perspective-1000 hidden md:block"
         >
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 1, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 1, duration: 0.8, type: "spring" }}
+            transition={{ duration: 0.8, type: "spring" }}
             className="bg-white/5 backdrop-blur-sm p-8 rounded-3xl shadow-2xl border border-white/10 transform transition-transform hover:scale-[1.02] relative overflow-hidden"
           >
             {/* Glossy sheen effect */}
@@ -134,9 +131,9 @@ const Hero: React.FC = () => {
       {/* Scroll indicator */}
       <motion.div
         style={{ opacity }}
-        initial={{ opacity: 0 }}
+        initial={{ opacity: 0.7 }}
         animate={{ opacity: 0.7 }}
-        transition={{ delay: 2, duration: 1 }}
+        transition={{ duration: 1 }}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden md:block text-white"
       >
         <div className="flex flex-col items-center gap-2">
