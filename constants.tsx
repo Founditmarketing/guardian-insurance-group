@@ -26,6 +26,7 @@ export const NAV_LINKS: NavLink[] = [
       { label: 'COMMERCIAL AUTO INSURANCE', href: '/products/commercial-auto-insurance' },
     ]
   },
+  { label: 'REVIEWS', href: '/reviews' },
   { label: 'CONTACT US', href: '/contact' },
   { label: 'POLICY QUESTIONS', href: '/policy-questions' },
 ];
