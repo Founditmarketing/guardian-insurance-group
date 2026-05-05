@@ -47,7 +47,10 @@ const Hero: React.FC = () => {
             <div className="flex text-brand-gold">
               {[...Array(5)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}
             </div>
-            <span className="text-xs font-bold tracking-wide uppercase text-brand-gold">5-Star Independent Agency</span>
+            <span className="text-xs font-bold tracking-wide uppercase text-brand-gold">
+              <span className="hidden sm:inline">5-Star Independent Agency</span>
+              <span className="sm:hidden">5-Star Agency</span>
+            </span>
           </motion.div>
 
           <motion.h1
@@ -66,7 +69,7 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.6 }}
-            className="text-base sm:text-lg md:text-xl text-slate-300 mb-8 max-w-lg mx-auto md:mx-0 font-light leading-relaxed"
+            className="text-base sm:text-lg md:text-xl text-slate-100 mb-8 max-w-lg mx-auto md:mx-0 font-light leading-relaxed"
           >
             Your trusted independent insurance partner. We provide expert guidance and comprehensive coverage to protect your family, your business, and your future.
           </motion.p>
