@@ -1,12 +1,12 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { TESTIMONIALS } from '../constants';
 import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Testimonials: React.FC = () => {
+  // Mobile Pagination
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const next = () => {
     setDirection(1);
@@ -18,17 +18,23 @@ const Testimonials: React.FC = () => {
     setCurrentIndex((prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
   };
 
-  const scrollLeft = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: -400, behavior: 'smooth' });
-    }
+  // Desktop Pagination
+  const [desktopPage, setDesktopPage] = useState(0);
+  const [desktopDirection, setDesktopDirection] = useState(0);
+  const itemsPerPage = 4; // Show 4 reviews at a time on desktop
+  const maxDesktopPage = Math.ceil(TESTIMONIALS.length / itemsPerPage) - 1;
+
+  const nextDesktop = () => {
+    setDesktopDirection(1);
+    setDesktopPage((prev) => (prev + 1 > maxDesktopPage ? 0 : prev + 1));
   };
 
-  const scrollRight = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: 400, behavior: 'smooth' });
-    }
+  const prevDesktop = () => {
+    setDesktopDirection(-1);
+    setDesktopPage((prev) => (prev - 1 < 0 ? maxDesktopPage : prev - 1));
   };
+
+  const currentDesktopItems = TESTIMONIALS.slice(desktopPage * itemsPerPage, (desktopPage + 1) * itemsPerPage);
 
   const slideVariants = {
     enter: (direction: number) => ({
@@ -140,52 +146,58 @@ const Testimonials: React.FC = () => {
 
             {/* DESKTOP VIEW */}
             <div className="hidden md:block relative">
-                <style dangerouslySetInnerHTML={{__html: `
-                  .hide-scrollbar::-webkit-scrollbar { display: none; }
-                  .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-                `}} />
-                
-                <div 
-                  ref={scrollContainerRef}
-                  className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 hide-scrollbar px-2"
-                >
-                    {TESTIMONIALS.map((testimonial) => (
-                        <div key={testimonial.id} className="min-w-[350px] lg:min-w-[400px] flex-shrink-0 snap-center pt-6">
-                            <div className="bg-white rounded-2xl p-8 shadow-xl relative h-full flex flex-col hover:shadow-2xl transition-shadow border border-slate-100">
-                                <div className="absolute -top-6 left-8 bg-brand-gold rounded-full p-3 shadow-lg z-20">
-                                    <Quote className="text-white" size={20} />
+                <div className="overflow-hidden">
+                  <AnimatePresence mode='wait' custom={desktopDirection}>
+                    <motion.div
+                      key={desktopPage}
+                      custom={desktopDirection}
+                      variants={slideVariants}
+                      initial="enter"
+                      animate="center"
+                      exit="exit"
+                      transition={{
+                        x: { type: "spring", stiffness: 300, damping: 30 },
+                        opacity: { duration: 0.2 }
+                      }}
+                      className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-6 min-h-[300px]"
+                    >
+                        {currentDesktopItems.map((testimonial) => (
+                            <div key={testimonial.id} className="bg-white rounded-2xl p-6 lg:p-8 shadow-xl relative h-full flex flex-col hover:shadow-2xl transition-shadow border border-slate-100">
+                                <div className="absolute -top-4 left-6 bg-brand-gold rounded-full p-2 shadow-lg z-20">
+                                    <Quote className="text-white" size={16} />
                                 </div>
                                 <div className="flex text-brand-gold mb-4 gap-1 mt-2">
                                     {[...Array(5)].map((_, i) => (
                                         <Star key={i} size={16} fill="currentColor" />
                                     ))}
                                 </div>
-                                <p className="text-sm lg:text-base text-brand-navy font-medium italic mb-6 flex-grow leading-relaxed">
+                                <p className="text-sm text-brand-navy font-medium italic mb-6 flex-grow leading-relaxed">
                                     "{testimonial.text}"
                                 </p>
                                 <div>
-                                    <h4 className="font-bold text-brand-navy text-lg">{testimonial.author}</h4>
-                                    <span className="text-slate-500 text-sm flex items-center gap-1 mt-1">
+                                    <h4 className="font-bold text-brand-navy text-sm lg:text-base">{testimonial.author}</h4>
+                                    <span className="text-slate-500 text-xs flex items-center gap-1 mt-1">
                                       <span className="w-1.5 h-1.5 rounded-full bg-brand-gold inline-block"></span>
                                       {testimonial.location}
                                     </span>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
                 
                 {/* Desktop Controls */}
-                <div className="flex justify-center gap-4 mt-6">
+                <div className="flex justify-center gap-4 mt-8">
                     <button 
-                        onClick={scrollLeft}
+                        onClick={prevDesktop}
                         className="p-4 rounded-full bg-white/10 text-white hover:bg-brand-gold hover:text-white transition-all backdrop-blur-md border border-white/20 shadow-lg hover:shadow-brand-gold/50"
                         title="Previous Reviews"
                     >
                         <ChevronLeft size={24} />
                     </button>
                     <button 
-                         onClick={scrollRight}
+                         onClick={nextDesktop}
                         className="p-4 rounded-full bg-white/10 text-white hover:bg-brand-gold hover:text-white transition-all backdrop-blur-md border border-white/20 shadow-lg hover:shadow-brand-gold/50"
                         title="Next Reviews"
                     >
