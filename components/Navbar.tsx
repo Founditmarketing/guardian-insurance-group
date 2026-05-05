@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Phone, ChevronDown, Shield } from 'lucide-react';
+import { Menu, X, Phone, ChevronDown, Shield, MapPin, Mail } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { NAV_LINKS, PHONE_NUMBER, SERVICES } from '../constants';
+import { NAV_LINKS, PHONE_NUMBER, SERVICES, ADDRESS } from '../constants';
 import { Service } from '../types';
 
 const Navbar: React.FC = () => {
@@ -86,14 +86,14 @@ const Navbar: React.FC = () => {
                         transition={{ duration: 0.2 }}
                         className={`absolute top-full mt-1 bg-brand-navy border border-white/10 shadow-2xl overflow-hidden z-50 ${
                           link.label === 'PRODUCTS' 
-                            ? "left-1/2 -translate-x-1/2 w-[900px] rounded-2xl" 
+                            ? "left-1/2 -translate-x-1/2 w-[95vw] max-w-[1400px] rounded-2xl" 
                             : "left-0 w-64 rounded-xl"
                         }`}
                       >
                         {link.label === 'PRODUCTS' ? (
-                          <div className="flex w-full p-6 h-[380px]">
-                            {/* Left Side: Image Display */}
-                            <div className="w-1/3 pr-6 border-r border-white/10 relative overflow-hidden rounded-xl">
+                          <div className="grid grid-cols-12 w-full p-6 min-h-[400px]">
+                            {/* Left Side: Image Display (3 cols) */}
+                            <div className="col-span-3 relative overflow-hidden rounded-xl h-full">
                               {hoveredService ? (
                                 <motion.div 
                                   key={hoveredService.id}
@@ -103,46 +103,78 @@ const Navbar: React.FC = () => {
                                 >
                                   <img src={hoveredService.image} alt={hoveredService.title} className="w-full h-full object-cover rounded-xl opacity-70" />
                                   <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/60 to-transparent"></div>
-                                  <div className="absolute bottom-4 left-4 right-4">
-                                    <h4 className="text-white font-bold text-lg mb-1">{hoveredService.title}</h4>
-                                    <p className="text-slate-300 text-xs line-clamp-3 leading-relaxed">{hoveredService.description}</p>
+                                  <div className="absolute bottom-6 left-6 right-6">
+                                    <h4 className="text-white font-bold text-xl mb-2">{hoveredService.title}</h4>
+                                    <p className="text-slate-300 text-sm line-clamp-3 leading-relaxed">{hoveredService.description}</p>
                                   </div>
                                 </motion.div>
                               ) : (
-                                <div className="absolute inset-0 bg-white/5 flex flex-col items-center justify-center p-6 text-center rounded-xl">
-                                  <div className="w-16 h-16 rounded-full bg-brand-gold/20 flex items-center justify-center mb-4">
-                                    <Shield size={32} className="text-brand-gold" />
+                                <div className="absolute inset-0 bg-white/5 flex flex-col items-center justify-center p-8 text-center rounded-xl">
+                                  <div className="w-20 h-20 rounded-full bg-brand-gold/20 flex items-center justify-center mb-6">
+                                    <Shield size={40} className="text-brand-gold" />
                                   </div>
-                                  <h3 className="text-white font-bold text-lg">Comprehensive Coverage</h3>
-                                  <p className="text-slate-400 text-xs mt-2 leading-relaxed">Hover over a product to learn more and see details.</p>
+                                  <h3 className="text-white font-bold text-xl mb-2">Comprehensive Coverage</h3>
+                                  <p className="text-slate-400 text-sm leading-relaxed">Hover over a product to learn more and see details.</p>
                                 </div>
                               )}
                             </div>
                             
-                            {/* Right Side: Grid of Links */}
-                            <div className="w-2/3 pl-6 grid grid-cols-2 gap-x-6 gap-y-2 content-start">
-                              {SERVICES.map((service) => {
-                                const Icon = service.icon;
-                                const href = service.id === 'commercial-auto' 
-                                  ? '/products/commercial-auto-insurance' 
-                                  : service.id === 'business'
-                                    ? '/products/business-insurance'
-                                    : `/products/${service.id}-insurance`;
-                                
-                                return (
-                                  <Link
-                                    key={service.id}
-                                    to={href}
-                                    onMouseEnter={() => setHoveredService(service)}
-                                    className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-white transition-all duration-200 group"
-                                  >
-                                    <div className="p-1.5 rounded-md bg-white/5 group-hover:bg-brand-gold group-hover:text-white transition-colors text-brand-gold">
-                                      <Icon size={16} />
-                                    </div>
-                                    <span className="font-medium">{service.title}</span>
-                                  </Link>
-                                );
-                              })}
+                            {/* Middle: Grid of Links (6 cols) */}
+                            <div className="col-span-7 px-8 border-r border-white/10">
+                              <h3 className="text-brand-gold font-bold text-xs uppercase tracking-widest mb-6">Our Insurance Products</h3>
+                              <div className="grid grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-4 content-start">
+                                {SERVICES.map((service) => {
+                                  const Icon = service.icon;
+                                  const href = service.id === 'commercial-auto' 
+                                    ? '/products/commercial-auto-insurance' 
+                                    : service.id === 'business'
+                                      ? '/products/business-insurance'
+                                      : `/products/${service.id}-insurance`;
+                                  
+                                  return (
+                                    <Link
+                                      key={service.id}
+                                      to={href}
+                                      onMouseEnter={() => setHoveredService(service)}
+                                      className="flex items-center gap-3 p-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-white transition-all duration-200 group"
+                                    >
+                                      <div className="p-2 rounded-md bg-white/5 group-hover:bg-brand-gold group-hover:text-white transition-colors text-brand-gold shrink-0">
+                                        <Icon size={18} />
+                                      </div>
+                                      <span className="font-medium leading-tight">{service.title}</span>
+                                    </Link>
+                                  );
+                                })}
+                              </div>
+                            </div>
+
+                            {/* Right Side: Contact Info (3 cols) */}
+                            <div className="col-span-2 pl-8 py-2 flex flex-col">
+                              <h3 className="text-brand-gold font-bold text-xs uppercase tracking-widest mb-6">Get in Touch</h3>
+                              
+                              <div className="space-y-6">
+                                <div>
+                                  <div className="flex items-center gap-3 text-white font-medium mb-1">
+                                    <Phone size={16} className="text-brand-gold" />
+                                    <span>{PHONE_NUMBER}</span>
+                                  </div>
+                                  <p className="text-xs text-slate-400 pl-7">Call us for a quick quote</p>
+                                </div>
+
+                                <div>
+                                  <div className="flex items-start gap-3 text-white font-medium mb-1">
+                                    <MapPin size={16} className="text-brand-gold shrink-0 mt-0.5" />
+                                    <span className="text-sm leading-tight">{ADDRESS}</span>
+                                  </div>
+                                </div>
+
+                                <Link 
+                                  to="/contact"
+                                  className="inline-block mt-4 text-center bg-brand-gold hover:bg-brand-goldHover text-white px-6 py-3 rounded-full font-bold transition-all text-sm shadow-lg hover:shadow-brand-gold/20"
+                                >
+                                  Contact an Agent
+                                </Link>
+                              </div>
                             </div>
                           </div>
                         ) : (
