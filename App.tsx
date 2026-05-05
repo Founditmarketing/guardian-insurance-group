@@ -17,6 +17,10 @@ import TermsAndConditions from './pages/TermsAndConditions';
 import PolicyQuestions from './pages/PolicyQuestions';
 import TeamMember from './pages/TeamMember';
 import Reviews from './pages/Reviews';
+import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
+import CommunityInvolvement from './pages/CommunityInvolvement';
+import CommunityPost from './pages/CommunityPost';
 
 // Products
 import BoatInsurance from './pages/BoatInsurance';
@@ -44,6 +48,10 @@ const App: React.FC = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/community-involvement" element={<CommunityInvolvement />} />
+              <Route path="/community-involvement/:slug" element={<CommunityPost />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/reviews" element={<Reviews />} />
               <Route path="/team/:id" element={<TeamMember />} />

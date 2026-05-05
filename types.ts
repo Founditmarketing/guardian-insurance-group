@@ -53,8 +53,9 @@ export interface Article {
   title: string;
   excerpt: string;
   category: string;
-  date: string;
-  image: string;
+  date?: string;
+  image?: string;
+  images?: string[];
   readTime: string;
   content: string;
 }
