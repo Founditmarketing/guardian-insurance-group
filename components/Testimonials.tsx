@@ -63,7 +63,7 @@ const Testimonials: React.FC = () => {
         {/* Decorative Circle */}
         <div className="absolute -left-20 top-20 w-64 h-64 bg-brand-gold/10 rounded-full blur-3xl"></div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
             <div className="text-center mb-12">
                 <h2 className="text-3xl font-heading font-bold text-white">What the Lake of the Ozarks is Saying</h2>
             </div>
@@ -159,7 +159,7 @@ const Testimonials: React.FC = () => {
                         x: { type: "spring", stiffness: 300, damping: 30 },
                         opacity: { duration: 0.2 }
                       }}
-                      className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-6 min-h-[300px]"
+                      className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-6"
                     >
                         {currentDesktopItems.map((testimonial) => (
                             <div key={testimonial.id} className="bg-white rounded-2xl p-6 lg:p-8 shadow-xl relative h-full flex flex-col hover:shadow-2xl transition-shadow border border-slate-100">
@@ -171,7 +171,7 @@ const Testimonials: React.FC = () => {
                                         <Star key={i} size={16} fill="currentColor" />
                                     ))}
                                 </div>
-                                <p className="text-sm text-brand-navy font-medium italic mb-6 flex-grow leading-relaxed">
+                                <p className="text-sm text-brand-navy font-medium italic mb-6 flex-grow leading-relaxed line-clamp-5">
                                     "{testimonial.text}"
                                 </p>
                                 <div>
