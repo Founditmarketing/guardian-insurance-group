@@ -204,6 +204,48 @@ export const TESTIMONIALS: Testimonial[] = [
     author: "Clarissa Taylor",
     location: "Verified Client",
     avatar: "https://i.pravatar.cc/150?u=clarissa"
+  },
+  {
+    id: '7',
+    text: "Paula was absolutely amazing. She fielded every one of our questions and we never felt rushed or that our questions were a bother. And her prices were better than any other carriers for home and auto insurance. I would highly recommend her to anyone looking for home and auto insurance.",
+    author: "Meredith “Kit” Bromfield",
+    location: "Verified Client"
+  },
+  {
+    id: '8',
+    text: "Paula was a pleasure to work with. Not only did she answer all of the questions we had in regards to our personal lines, but she was also able to save us a ton of money compared to our previous carrier. Thanks, Paula!",
+    author: "Michael Snyder",
+    location: "Verified Client"
+  },
+  {
+    id: '9',
+    text: "I have used the Guardian Group in Camdenton for over 3 years. I trust their ability to help me make good decisions on investments, home insurance, car insurance and Medicare. They are a one stop shop, always having time to discuss your policies or to make changes. I recently made my 1st home claim and they helped me through the process. I highly recommend them !",
+    author: "Vicky Starke",
+    location: "Verified Client"
+  },
+  {
+    id: '10',
+    text: "Paula and Mark have done and excellent job! We can't thank them enough for all the hard work. They continue to provide all the answers to our questions and always have a moment to listen. I'd highly recommend and thank you once again.",
+    author: "Drake Cheek",
+    location: "Verified Client"
+  },
+  {
+    id: '11',
+    text: "Great experience! Very knowledgeable agents that listened to what I wanted and got me some great quotes quickly!",
+    author: "Tawni Konwinski",
+    location: "Verified Client"
+  },
+  {
+    id: '12',
+    text: "This couple is amazing. Very kind and helpful. And check on me after I had a small incident with a deer. Highly suggest them.",
+    author: "Judy Zickefoose",
+    location: "Verified Client"
+  },
+  {
+    id: '13',
+    text: "From my experience with Guardian Insurance Group - Nienhueser Agency, they have your best interest at heart. Auto and home insurance may not be the most exciting thing to deal with, but the agents worked hard to find the right solution for my needs. They are like family!",
+    author: "Chase Dempsey",
+    location: "Verified Client"
   }
 ];
 

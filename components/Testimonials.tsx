@@ -66,7 +66,16 @@ const Testimonials: React.FC = () => {
 
         <div className="max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
             <div className="text-center mb-12">
-                <h2 className="text-3xl font-heading font-bold text-white">What the Lake of the Ozarks is Saying</h2>
+                <h2 className="text-3xl font-heading font-bold text-white mb-6">What the Lake of the Ozarks is Saying</h2>
+                <a 
+                    href="https://www.google.com/search?q=guardian+insurance+group+Camdenton%2C+MO&rlz=1C5CHFA_enUS1003US1005&oq=gua&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDsyBggCEEUYOTINCAMQABiDARixAxiABDIGCAQQRRg8MgYIBRBFGDwyBggGEEUYPDIGCAcQRRg90gEIMTU2MWowajeoAgCwAgA&sourceid=chrome&ie=UTF-8#lrd=0x87c4df30074a53ef:0x21dbe3d4499ebbc0,3,,,,"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-brand-gold hover:bg-brand-goldHover text-white px-8 py-3 rounded-full font-bold transition-all shadow-lg hover:shadow-brand-gold/50 hover:-translate-y-1"
+                >
+                    <Star size={18} fill="currentColor" />
+                    Leave a Google Review
+                </a>
             </div>
 
             {/* MOBILE VIEW */}
