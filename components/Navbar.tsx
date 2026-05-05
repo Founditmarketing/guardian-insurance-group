@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Phone, ChevronDown } from 'lucide-react';
+import { Menu, X, Phone, ChevronDown, Shield } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { NAV_LINKS, PHONE_NUMBER } from '../constants';
+import { NAV_LINKS, PHONE_NUMBER, SERVICES } from '../constants';
+import { Service } from '../types';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState<string | null>(null);
+  const [hoveredService, setHoveredService] = useState<Service | null>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -82,19 +84,80 @@ const Navbar: React.FC = () => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute top-full left-0 mt-1 w-64 bg-brand-navy border border-white/10 rounded-xl shadow-2xl overflow-hidden z-50"
+                        className={`absolute top-full mt-1 bg-brand-navy border border-white/10 shadow-2xl overflow-hidden z-50 ${
+                          link.label === 'PRODUCTS' 
+                            ? "left-1/2 -translate-x-1/2 w-[900px] rounded-2xl" 
+                            : "left-0 w-64 rounded-xl"
+                        }`}
                       >
-                        <div className="py-2">
-                          {link.sublinks.map((sublink) => (
-                            <Link
-                              key={sublink.label}
-                              to={sublink.href}
-                              className="block px-6 py-3 text-sm text-gray-300 hover:bg-white/5 hover:text-white hover:pl-8 transition-all duration-200"
-                            >
-                              {sublink.label}
-                            </Link>
-                          ))}
-                        </div>
+                        {link.label === 'PRODUCTS' ? (
+                          <div className="flex w-full p-6 h-[380px]">
+                            {/* Left Side: Image Display */}
+                            <div className="w-1/3 pr-6 border-r border-white/10 relative overflow-hidden rounded-xl">
+                              {hoveredService ? (
+                                <motion.div 
+                                  key={hoveredService.id}
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  className="absolute inset-0"
+                                >
+                                  <img src={hoveredService.image} alt={hoveredService.title} className="w-full h-full object-cover rounded-xl opacity-70" />
+                                  <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/60 to-transparent"></div>
+                                  <div className="absolute bottom-4 left-4 right-4">
+                                    <h4 className="text-white font-bold text-lg mb-1">{hoveredService.title}</h4>
+                                    <p className="text-slate-300 text-xs line-clamp-3 leading-relaxed">{hoveredService.description}</p>
+                                  </div>
+                                </motion.div>
+                              ) : (
+                                <div className="absolute inset-0 bg-white/5 flex flex-col items-center justify-center p-6 text-center rounded-xl">
+                                  <div className="w-16 h-16 rounded-full bg-brand-gold/20 flex items-center justify-center mb-4">
+                                    <Shield size={32} className="text-brand-gold" />
+                                  </div>
+                                  <h3 className="text-white font-bold text-lg">Comprehensive Coverage</h3>
+                                  <p className="text-slate-400 text-xs mt-2 leading-relaxed">Hover over a product to learn more and see details.</p>
+                                </div>
+                              )}
+                            </div>
+                            
+                            {/* Right Side: Grid of Links */}
+                            <div className="w-2/3 pl-6 grid grid-cols-2 gap-x-6 gap-y-2 content-start">
+                              {SERVICES.map((service) => {
+                                const Icon = service.icon;
+                                const href = service.id === 'commercial-auto' 
+                                  ? '/products/commercial-auto-insurance' 
+                                  : service.id === 'business'
+                                    ? '/products/business-insurance'
+                                    : `/products/${service.id}-insurance`;
+                                
+                                return (
+                                  <Link
+                                    key={service.id}
+                                    to={href}
+                                    onMouseEnter={() => setHoveredService(service)}
+                                    className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-white transition-all duration-200 group"
+                                  >
+                                    <div className="p-1.5 rounded-md bg-white/5 group-hover:bg-brand-gold group-hover:text-white transition-colors text-brand-gold">
+                                      <Icon size={16} />
+                                    </div>
+                                    <span className="font-medium">{service.title}</span>
+                                  </Link>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="py-2">
+                            {link.sublinks.map((sublink) => (
+                              <Link
+                                key={sublink.label}
+                                to={sublink.href}
+                                className="block px-6 py-3 text-sm text-gray-300 hover:bg-white/5 hover:text-white hover:pl-8 transition-all duration-200"
+                              >
+                                {sublink.label}
+                              </Link>
+                            ))}
+                          </div>
+                        )}
                       </motion.div>
                     )}
                   </AnimatePresence>
