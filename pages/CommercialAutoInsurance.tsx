@@ -15,7 +15,7 @@ const CommercialAutoInsurance: React.FC = () => {
       {/* Hero Section */}
       <Section className="bg-brand-navy relative overflow-hidden text-white min-h-[40vh] flex items-center">
         <div className="absolute inset-0">
-          <img src="/commercial auto.png" alt="Background" className="w-full h-full object-cover" />
+          <img src="/commercial auto insurance.png" alt="Background" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/80 to-brand-navy/40"></div>
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4">

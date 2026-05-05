@@ -105,7 +105,8 @@ export const SERVICES: Service[] = [
     title: 'Umbrella Insurance',
     description: 'Extra liability coverage that goes beyond the limits of your homeowners or auto insurance.',
     icon: Umbrella,
-    category: 'personal'
+    category: 'personal',
+    image: '/umbrella insurance.png'
   },
   {
     id: 'business',
@@ -121,7 +122,7 @@ export const SERVICES: Service[] = [
     description: 'Coverage for your work trucks, delivery vans, and fleet vehicles.',
     icon: Truck,
     category: 'commercial',
-    image: '/commercial auto.png'
+    image: '/commercial auto insurance.png'
   }
 ];
 

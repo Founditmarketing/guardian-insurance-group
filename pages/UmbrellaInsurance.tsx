@@ -14,7 +14,10 @@ const UmbrellaInsurance: React.FC = () => {
       
       {/* Hero Section */}
       <Section className="bg-brand-navy relative overflow-hidden text-white min-h-[40vh] flex items-center">
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/60 to-transparent"></div>
+        <div className="absolute inset-0">
+          <img src="/umbrella insurance.png" alt="Background" className="w-full h-full object-cover object-center opacity-60" />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/80 to-transparent"></div>
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
           <TextReveal className="text-4xl md:text-6xl font-heading font-extrabold justify-center leading-tight mb-4">
             Umbrella Insurance
