@@ -54,7 +54,7 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-heading font-extrabold leading-tight mb-6 tracking-tight"
+            className="text-5xl sm:text-6xl lg:text-7xl font-heading font-extrabold leading-tight mb-6 tracking-tight"
           >
             Guarding What <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold via-yellow-200 to-brand-gold animate-shimmer bg-[length:200%_100%]">
