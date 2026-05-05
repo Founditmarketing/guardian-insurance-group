@@ -15,6 +15,7 @@ import ContactPage from './pages/ContactPage';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsAndConditions from './pages/TermsAndConditions';
 import PolicyQuestions from './pages/PolicyQuestions';
+import TeamMember from './pages/TeamMember';
 
 // Products
 import BoatInsurance from './pages/BoatInsurance';
@@ -43,6 +44,7 @@ const App: React.FC = () => {
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/team/:id" element={<TeamMember />} />
               <Route path="/policy-questions" element={<PolicyQuestions />} />
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="/terms" element={<TermsAndConditions />} />

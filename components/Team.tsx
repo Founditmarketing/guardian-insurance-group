@@ -4,6 +4,7 @@ import { TEAM, PHONE_NUMBER } from '../constants';
 import { motion } from 'framer-motion';
 import TextReveal from './ui/TextReveal';
 import { Phone, Mail, ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Team: React.FC = () => {
   return (
@@ -49,14 +50,14 @@ const Team: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.15, duration: 0.8, ease: "easeOut" }}
-            className="group relative h-[380px] md:h-[450px] rounded-2xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500"
+            className="group relative h-[380px] md:h-[450px] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 block"
           >
             {/* Image Layer */}
             <div className="absolute inset-0">
               <img
                 src={member.image}
                 alt={member.name}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 filter grayscale group-hover:grayscale-0"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
             </div>
 
@@ -75,14 +76,9 @@ const Team: React.FC = () => {
                     <p className="text-xs text-slate-200 mb-3 line-clamp-6">{member.description}</p>
                   )}
                   <div className="flex gap-3 pt-2">
-                    <a href={`tel:${PHONE_NUMBER}`} className="p-2 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-brand-gold transition-colors" title="Call">
-                      <Phone size={16} />
-                    </a>
-                    {member.email && (
-                      <a href={`mailto:${member.email}`} className="p-2 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-brand-gold transition-colors" title="Email">
-                        <Mail size={16} />
-                      </a>
-                    )}
+                    <Link to={`/team/${member.id}`} className="px-4 py-2 bg-brand-gold rounded-full text-white hover:bg-brand-goldHover transition-colors font-bold text-sm">
+                      Read Full Bio
+                    </Link>
                   </div>
                 </div>
               </div>
