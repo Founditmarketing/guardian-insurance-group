@@ -51,7 +51,7 @@ const Navbar: React.FC = () => {
             {NAV_LINKS.map((link) => (
               <div
                 key={link.label}
-                className="relative group py-2"
+                className={`${link.label === 'PRODUCTS' ? 'static' : 'relative'} group py-2`}
                 onMouseEnter={() => link.sublinks && setActiveDropdown(link.label)}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
@@ -80,18 +80,18 @@ const Navbar: React.FC = () => {
                   <AnimatePresence>
                     {activeDropdown === link.label && (
                       <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
+                        initial={{ opacity: 0, y: 10, x: link.label === 'PRODUCTS' ? "-50%" : 0 }}
+                        animate={{ opacity: 1, y: 0, x: link.label === 'PRODUCTS' ? "-50%" : 0 }}
+                        exit={{ opacity: 0, y: 10, x: link.label === 'PRODUCTS' ? "-50%" : 0 }}
                         transition={{ duration: 0.2 }}
                         className={`absolute top-full mt-1 bg-brand-navy border border-white/10 shadow-2xl overflow-hidden z-50 ${
                           link.label === 'PRODUCTS' 
-                            ? "left-1/2 -translate-x-1/2 w-[95vw] max-w-[1400px] rounded-2xl" 
+                            ? "left-1/2 w-[95vw] max-w-[1400px] rounded-2xl" 
                             : "left-0 w-64 rounded-xl"
                         }`}
                       >
                         {link.label === 'PRODUCTS' ? (
-                          <div className="grid grid-cols-12 w-full p-6 min-h-[400px]">
+                          <div className="grid grid-cols-12 w-full p-6 min-h-[320px]">
                             {/* Left Side: Image Display (3 cols) */}
                             <div className="col-span-3 relative overflow-hidden rounded-xl h-full">
                               {hoveredService ? (
@@ -101,7 +101,7 @@ const Navbar: React.FC = () => {
                                   animate={{ opacity: 1 }}
                                   className="absolute inset-0"
                                 >
-                                  <img src={hoveredService.image} alt={hoveredService.title} className="w-full h-full object-cover rounded-xl opacity-70" />
+                                  <img src={hoveredService.image} alt={hoveredService.title} className="w-full h-full object-cover object-center rounded-xl opacity-70" />
                                   <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/60 to-transparent"></div>
                                   <div className="absolute bottom-6 left-6 right-6">
                                     <h4 className="text-white font-bold text-xl mb-2">{hoveredService.title}</h4>
