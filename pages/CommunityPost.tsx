@@ -3,12 +3,13 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { COMMUNITY_POSTS } from '../constants';
 import { Article } from '../types';
 import Section from '../components/ui/Section';
-import { Calendar, Clock, ArrowLeft } from 'lucide-react';
+import { Calendar, Clock, ArrowLeft, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 
 const CommunityPost: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const post = COMMUNITY_POSTS.find(p => p.slug === slug);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
   if (!post) return <div className="pt-32 pb-16 min-h-screen text-center text-2xl font-bold">Post not found</div>;
 
@@ -85,10 +86,17 @@ const CommunityPost: React.FC = () => {
             {post.images && post.images.length > 1 && (
               <div className="mt-12 pt-8 border-t border-slate-100">
                 <h3 className="text-2xl font-bold text-brand-navy mb-6">Event Gallery</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                   {post.images.map((img, idx) => (
-                    <div key={idx} className="rounded-xl overflow-hidden shadow-md aspect-video">
-                      <img src={img} alt={`${post.title} - Image ${idx + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                    <div 
+                      key={idx} 
+                      className="rounded-xl overflow-hidden shadow-md aspect-square cursor-pointer group relative"
+                      onClick={() => setSelectedImageIndex(idx)}
+                    >
+                      <img src={img} alt={`${post.title} - Image ${idx + 1}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                      <div className="absolute inset-0 bg-brand-navy/0 group-hover:bg-brand-navy/20 transition-colors flex items-center justify-center">
+                        <span className="text-white opacity-0 group-hover:opacity-100 font-bold tracking-wide">VIEW</span>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -97,6 +105,48 @@ const CommunityPost: React.FC = () => {
           </div>
         </div>
       </Section>
+
+      {/* Lightbox Modal */}
+      {selectedImageIndex !== null && post.images && (
+        <div className="fixed inset-0 z-[200] bg-brand-navy/95 flex items-center justify-center p-4">
+          <button 
+            onClick={() => setSelectedImageIndex(null)}
+            className="absolute top-6 right-6 text-white hover:text-brand-gold transition-colors p-2"
+          >
+            <X size={32} />
+          </button>
+          
+          <button 
+            onClick={(e) => {
+              e.stopPropagation();
+              setSelectedImageIndex(prev => prev === null ? 0 : (prev === 0 ? post.images!.length - 1 : prev - 1));
+            }}
+            className="absolute left-4 md:left-10 text-white hover:text-brand-gold transition-colors p-2"
+          >
+            <ChevronLeft size={48} />
+          </button>
+
+          <img 
+            src={post.images[selectedImageIndex]} 
+            alt="Gallery item" 
+            className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl"
+          />
+
+          <button 
+            onClick={(e) => {
+              e.stopPropagation();
+              setSelectedImageIndex(prev => prev === null ? 0 : (prev === post.images!.length - 1 ? 0 : prev + 1));
+            }}
+            className="absolute right-4 md:right-10 text-white hover:text-brand-gold transition-colors p-2"
+          >
+            <ChevronRight size={48} />
+          </button>
+          
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/70 font-medium">
+            {selectedImageIndex + 1} / {post.images.length}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
